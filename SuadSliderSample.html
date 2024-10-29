@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Suad Slider Sample</title>
+</head>
+<body>
+	<h1> Suad Slider Sample </h1>
+	<input type = "range" id = "slider" min = "18" max = "23" value = "18" step = "1" oninput="updateList(this.value)">
+	<p> Hourly Wage: <span id="sliderValue">1</span></p>
+	<ul id=itemList>
+	</ul>
+	<script>
+		const items = [
+			'MFIP',
+			'SNAP',
+			'WIC',
+			'MSA Housing Assistance',
+			'MSA',
+			'GA'
+			];
+			function updateList(sliderValue) {
+				const list = document.getElementById('itemList');
+				const sliderValueDisplay = document.getElementById('sliderValue');
+				sliderValueDisplay.textContent = sliderValue;
+				
+				list.innerHTML = '';
+				
+				const numItemsToShow = 24 - sliderValue;
+				
+				for (let i = 0; i < numItemsToShow; i++) {
+					const li = document.createElement('li');
+					li.className = 'item';
+					li.textContent = items[i];
+					list.appendChild(li);
+					}
+			}
+		updateList(18);
+	</script>
+
+</body>
+</html>
